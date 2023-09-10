@@ -1,5 +1,7 @@
 package _01_methods._3_rain_game;
 
+import java.util.Random;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -42,44 +44,55 @@ import processing.core.PImage;
  *    text("Score: " + score, 20, 20);
  */
 public class RainGame extends PApplet {
-    static final int WIDTH = 600;
-    static final int HEIGHT = 600;
+	static final int WIDTH = 600;
+	static final int HEIGHT = 600;
 
-    int score = 0;
-    int bucketWidth = 50;
-    int bucketHeight;
-    PImage bucket;
-    int y;
-    int x;
+	Random ran = new Random();
+	int score = 0;
+	int bucketWidth = 50;
+	int bucketHeight = 70;
+	PImage bucket;
+	int y = 1;
+	int x = 300;
 
-    // Sets the size of your canvas
-    @Override
-    public void settings() {
-        size(WIDTH, HEIGHT);
-    }
+	// Sets the size of your canvas
+	@Override
+	public void settings() {
+		size(WIDTH, HEIGHT);
+	}
 
-    @Override
-    public void setup() {
+	@Override
+	public void setup() {
+		bucket = loadImage("bucket.png");
+		bucket.resize(bucketWidth, bucketHeight);
+	
+	}
 
-    }
+	@Override
+	public void draw() {
+		background(0,0,0);
+		fill(0, 0, 255);
+		ellipse(x, y, 10, 10);
+		y+= 15;
+		if (y > 600) {
+			y = 0;
+			x = ran.nextInt(600);
+		}
+		image(bucket, 300, 500);
+	}
 
-    @Override
-    public void draw() {
+	static public void main(String[] args) {
+		PApplet.main(RainGame.class.getName());
+	}
 
-    }
+	/*********************** DO NOT MODIFY THE CODE BELOW ********************/
 
-    static public void main(String[] args) {
-        PApplet.main(RainGame.class.getName());
-    }
-    
-    /*********************** DO NOT MODIFY THE CODE BELOW ********************/
-
-    void checkCatch(int x) {
-        if (x > mouseX && x < mouseX + bucketWidth) {
-            score++;
-        } else if (score > 0) {
-            score--;
-        }
-        println("Your score is now: " + score);
-    }
+	void checkCatch(int x) {
+		if (x > mouseX && x < mouseX + bucketWidth) {
+			score++;
+		} else if (score > 0) {
+			score--;
+		}
+		println("Your score is now: " + score);
+	}
 }

@@ -7,6 +7,7 @@ public class HousesRunner {
 
 	public static void main(String[] args) {
 		//Here we call the run() method from the Houses class
+		
 		//Do not add any more code here!
 		
 		Houses houseBuilder = new Houses();
