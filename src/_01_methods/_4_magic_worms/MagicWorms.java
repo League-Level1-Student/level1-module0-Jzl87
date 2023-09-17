@@ -1,4 +1,4 @@
-package _01_methods._4_magic_worms.MagicWorms;
+package _01_methods._4_magic_worms;
 
 import processing.core.PApplet;
 
@@ -16,7 +16,7 @@ import processing.core.PApplet;
  * 
  * 4. Now make each ellipse use random values for their x and y coordinates.
  *    Make sure they are inside the canvas.
- *    Hint: random(int maxValue)
+ *    Hint: random(integer maxValue)
  * 
  * 5. Run the program and check the recipe for the expected outcome.
  * 
@@ -40,12 +40,19 @@ public class MagicWorms extends PApplet {
 
     @Override
     public void setup() {
-
+    	background(0,0,0);
     }
 
     @Override
     public void draw() {
-
+    	makeMagical();
+    	for (int i = 0; i < 300; i++) {
+    		
+    		
+    		fill(frameCount, i, 25);
+    		ellipse(getWormX(i),getWormY(i),20, 20);
+    	}
+    	
     }
 
     static public void main(String[] args) {
